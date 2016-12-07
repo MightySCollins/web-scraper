@@ -1,0 +1,18 @@
+version: '2'
+services:
+  scrapyd:
+    image: vimagick/scrapyd
+    ports:
+      - "6800:6800"
+    restart: always
+
+  scrapy:
+    image: vimagick/scrapyd
+    command: bash
+    volumes:
+      - .:/code
+    working_dir: /code
+    restart: always
+
+  splash:
+    image: scrapinghub/splash
