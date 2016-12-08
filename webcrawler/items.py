@@ -8,7 +8,13 @@
 import scrapy
 
 
-class WebcrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+def http(values):
+    return ['http:%s' % value for value in values]
+
+
+class PostItem(scrapy.Item):
+    subject = scrapy.Field()
+    author = scrapy.Field()
+    message = scrapy.Field()
+    image_urls = scrapy.Field(output_processor=http)
+    images = scrapy.Field()
